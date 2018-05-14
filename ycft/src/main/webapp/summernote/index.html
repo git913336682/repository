@@ -14,11 +14,51 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $('.summernote').summernote({
-        height: 300,
-        tabsize: 2
-      });
+    	$('.summernote').summernote({
+            height: 500,
+            lang: 'zh-CN',
+            focus:true,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['picture', 'video']]
+            ],
+            callbacks: {
+                onImageUpload: function(files, editor, $editable) {
+                    sendFile(files);
+                }
+            }
+        });
     });
+  //富文本编辑器
+    function sendFile(files, editor, $editable) {
+    	$(".note-toolbar.btn-toolbar").append('正在上传图片'); 
+        var data = new FormData();
+        data.append("file", files[0]);
+        $.ajax({
+            data : data,
+            type : "POST",
+            url : "../upload.do", //图片上传出来的url，返回的是图片上传后的路径，http格式
+            cache : false,
+            contentType : false,
+            processData : false,
+            success: function(data) {
+                var newData=eval("("+data+")");
+            $('.summernote').summernote('editor.insertImage', newData.path); 
+            },
+            error:function(){
+                alert("上传失败");
+            } 
+        });
+    } 
+    function refer(){
+    	var sHTML = $('.summernote').summernote('code');
+    	  alert(sHTML);
+    }
+    
   </script>
 </head>
 <body>
@@ -29,5 +69,8 @@
     </h4>
     <div class="summernote"><p>内容</p></div>
   </div>
+  <script type="text/javascript">
+  </script>
+  <input type="button" value="提交" onclick="refer()"/>
 </body>
 </html>
