@@ -12,7 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ycft.ycft.po.User;
 import com.ycft.ycft.services.fe.UserSer;
 
+/**
+ * 用户控制层
+ * @author 邵帅
+ *
+ */
 @Controller(value="feUserCon")
+@RequestMapping("fe/userCon/")
 public class UserCon {
 	
 	@Autowired
@@ -21,9 +27,11 @@ public class UserCon {
 	/**
 	 * 客户端登录
 	 * 
-	 * @param u
-	 * @param res
-	 */
+	 * @author 邵帅
+	 * @param User u 参数绑定User对象
+	 * @param res HttpServletResponse对象
+	 * 2018年5月16日下午3:53:13
+	 */ 
 	@RequestMapping("login.do")
 	public  void login(User u , HttpServletResponse res) {
 		//是否登录成功
