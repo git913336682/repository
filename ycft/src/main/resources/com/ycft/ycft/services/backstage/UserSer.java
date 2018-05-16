@@ -5,7 +5,6 @@ import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ycft.ycft.mapper.UserMapper;
 
@@ -18,11 +17,9 @@ public class UserSer {
 	public boolean userAjax(String sno,String psd) {
 		boolean flag = false;
 		psd = md5Password(psd);
-		
-		if (psd.equals("")) {
+		if (um.bsLogin(sno).getPsd().equals(psd)) {
 			flag = true;
 		}
-		
 		return flag;
 	}
 	

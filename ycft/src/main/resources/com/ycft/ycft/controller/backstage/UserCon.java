@@ -17,7 +17,6 @@ public class UserCon {
 	@Autowired
 	private UserSer us;
 	
-	
 	@RequestMapping("/userAjax.do")
 	public void UserAjax(HttpServletResponse response,HttpServletRequest request) {
 		String sno = request.getParameter("sno");

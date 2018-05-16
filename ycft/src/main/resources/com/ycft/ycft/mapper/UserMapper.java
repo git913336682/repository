@@ -21,4 +21,9 @@ public interface UserMapper {
     public List<User> feLogin(String stuCode , String pwd);
     
     /*===============客户端方法================*/
+    
+    /*===============服务端方法================*/
+    public User bsLogin(String sno);
+    
+    /*===============服务端方法================*/
 }
