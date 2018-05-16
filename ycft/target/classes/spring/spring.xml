@@ -94,12 +94,22 @@
             <tx:method name="*Affairs" propagation="REQUIRED" />
         </tx:attributes>
     </tx:advice>    
-    <!-- 需要事务处理的切面 -->
-    <aop:config>
+    
+    <!-- 事物 end -->
+    <bean id="beanUtil" class="com.ycft.ycft.utils.BeanUtil"></bean>  
+	<!-- 初始化 Service -->
+	<bean id="InitService" class="com.ycft.ycft.services.InitService" name="InitService"></bean> 
+	<!-- 系统设置类注入该service -->
+	<bean id="systemInit" class="com.ycft.ycft.system.SystemInit" name="systemInit">
+		<property name="initService" ref="InitService"></property>
+	</bean>
+	
+	
+	<!-- 需要事务处理的切面 -->
+    <aop:config proxy-target-class="true">
         <aop:pointcut id="transactionPointcut"
             expression="execution(* com.ycft.ycft..*.*(..))" />
         <aop:advisor pointcut-ref="transactionPointcut"
             advice-ref="transactionAdvice" />
-    </aop:config>
-    <!-- 事物 end -->
+    </aop:config> 
 </beans>
