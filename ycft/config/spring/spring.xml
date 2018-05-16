@@ -96,7 +96,7 @@
     </tx:advice>    
     
     <!-- 事物 end -->
-    <bean id="beanUtil" class="com.ycft.ycft.utils.BeanUtil"></bean>  
+    <bean id="beanUtil" class="com.ycft.ycft.tools.BeanUtil"></bean>  
 	<!-- 初始化 Service -->
 	<bean id="InitService" class="com.ycft.ycft.services.InitService" name="InitService"></bean> 
 	<!-- 系统设置类注入该service -->
