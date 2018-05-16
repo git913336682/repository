@@ -34,7 +34,6 @@ public class Test {
     	 JSONObject jObject=new JSONObject();
     	 jObject.put("path", path);
     	 PrintWriter out=response.getWriter();
-    	 Thread.sleep(2000);
     	 out.print(jObject);
     	 out.close();
      }catch(Exception e) {

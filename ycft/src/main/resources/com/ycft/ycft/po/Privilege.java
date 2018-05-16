@@ -1,5 +1,7 @@
 package com.ycft.ycft.po;
 
+import java.util.List;
+
 public class Privilege {
     private Integer id;
 
@@ -10,8 +12,26 @@ public class Privilege {
     private Integer level;
 
     private Integer pId;
+    private String icon;
+    private List<Privilege> childMenus;
+    
+    public String getIcon() {
+		return icon;
+	}
 
-    public Integer getId() {
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public List<Privilege> getChildMenus() {
+		return childMenus;
+	}
+
+	public void setChildMenus(List<Privilege> childMenus) {
+		this.childMenus = childMenus;
+	}
+
+	public Integer getId() {
         return id;
     }
 
