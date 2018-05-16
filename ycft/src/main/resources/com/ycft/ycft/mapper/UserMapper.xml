@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ycft.ycft.mapper.UserMapper" >
+   <!-- 须要一对多请写另一个，不要改动原基础Map -->
   <resultMap id="BaseResultMap" type="com.ycft.ycft.po.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="sno" property="sno" jdbcType="VARCHAR" />
