@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ycft.ycft.po.User;
 import com.ycft.ycft.services.fe.UserSer;
 
-@Controller(value="FEUserCon")
+@Controller(value="feUserCon")
 public class UserCon {
 	
 	@Autowired
@@ -27,7 +27,7 @@ public class UserCon {
 	@RequestMapping("login.do")
 	public  void login(User u , HttpServletResponse res) {
 		//ÊÇ·ñµÇÂ¼³É¹¦
-		boolean isLogin = us.login(u.getSno(), u.getPsd());
+		boolean isLogin = us.login(u.getSno(), u.getPsd() , res);
 		PrintWriter out = null;
 		try {
 			out = res.getWriter();
