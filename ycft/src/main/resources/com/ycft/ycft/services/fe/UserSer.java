@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ycft.ycft.mapper.UserMapper;
 import com.ycft.ycft.po.User;
+import com.ycft.ycft.tools.MD5;
 
 @Service(value="feUserSer")
 public class UserSer {
@@ -25,7 +26,8 @@ public class UserSer {
 			User u = list.get(0);
 			//去个空格吧
 			pwd = pwd.trim();
-			if(u.getPsd().equals(pwd)) {
+			//比对Md5加密
+			if(u.getPsd().equals( MD5.md5Password(pwd) ) ) {
 				//开始存储session,cookie啥的
 				//实例化一个Cookie  
 		        Cookie cookie1 = new Cookie("uid", "" + u.getId());  
