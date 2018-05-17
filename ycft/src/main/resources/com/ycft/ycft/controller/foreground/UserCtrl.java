@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ycft.ycft.po.User;
-import com.ycft.ycft.services.fe.UserSrv;
+import com.ycft.ycft.services.foreground.UserSrv;
 
 /**
  * ”√ªßøÿ÷∆≤„
