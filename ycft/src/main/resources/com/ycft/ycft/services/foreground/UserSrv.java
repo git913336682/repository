@@ -31,7 +31,7 @@ public class UserSrv {
 	 */
 	public User login(String stuCode, String pwd) {
 		//µÇÂ¼
-		List<User> list =  um.feLogin(stuCode);
+		List<User> list =  um.feLogin(stuCode,pwd);
 		if (list != null && list.size() > 0) {
 			User u = list.get(0);
 			//È¥¸ö¿Õ¸ñ

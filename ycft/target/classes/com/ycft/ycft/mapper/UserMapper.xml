@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ycft.ycft.mapper.UserMapper" >
+   <!-- 须要一对多请写另一个，不要改动原基础Map -->
   <resultMap id="BaseResultMap" type="com.ycft.ycft.po.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="sno" property="sno" jdbcType="VARCHAR" />
@@ -22,11 +23,26 @@
     r2, r3
   </sql>
   
-  <select id="feLogin" parameterType="String" resultMap="BaseResultMap">
+  <!-- 客户端方法开始 -->
+  <select id="feLogin" parameterType="String" resultMap="BaseResultMap" >
       
-      	select <include refid="Base_Column_List"></include>
-      	from user where sno = #{0}
+      select <include refid="Base_Column_List"></include>
+      from user
+      where sno = #{0}
   </select>
+  <!-- 客户端方法结束 -->
+  
+  <!-- 服务端方法开始 -->
+  <select id="bsLogin" parameterType="String" resultMap="BaseResultMap" >
+      select * from user where sno = #{0}
+  </select>
+  
+  <select id="selAll" resultMap="BaseResultMap">
+  		select * 
+  		from user,user_role,role 
+  		where user.id = user_role.uid AND user_role.rid = role.id AND role.id = 3
+  </select>
+  <!-- 服务端方法结束 -->
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -203,4 +219,32 @@
       r3 = #{r3,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  		<!-- 全部查询：选择性查询 -->
+	<select id="selective" parameterType="com.ycft.ycft.po.User" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		<where>
+			<!--  <if test="area != null and area != '' and area !='全部'" >
+		        and area = #{area,jdbcType=VARCHAR}
+		      </if> -->
+		</where>
+	</select>
+	<!-- 批量导入 -->
+	<insert id="batchInsert" parameterType="java.util.List">
+		insert into user
+		<!-- 开始批量执行 -->
+		<foreach collection="list" item="item" index="index">
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="item.id != null">
+					id,
+		        </if>
+			</trim>
+			<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="item.id != null">
+					#{item.id},
+			      </if>
+			</trim>
+		</foreach>
+	</insert>
 </mapper>
