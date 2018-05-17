@@ -23,7 +23,9 @@ public interface UserMapper {
     /*===============客户端方法================*/
     
     /*===============服务端方法================*/
+    //通过账号查
     public User bsLogin(String sno);
-    
+    //全查
+    public List<User> selAll();
     /*===============服务端方法================*/
 }
