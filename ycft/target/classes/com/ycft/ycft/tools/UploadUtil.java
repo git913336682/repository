@@ -9,11 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
-=======
-import com.sun.tools.internal.ws.processor.model.Request;
-
->>>>>>> branch 'master' of https://github.com/git913336682/repository.git
 public class UploadUtil {
     
     

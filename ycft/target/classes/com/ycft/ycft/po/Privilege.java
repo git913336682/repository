@@ -1,19 +1,5 @@
 package com.ycft.ycft.po;
 
-<<<<<<< HEAD
-public class Privilege {
-    private Integer id;
-
-    private String mName;
-
-    private String mUrl;
-
-    private Integer level;
-
-    private Integer pId;
-
-    public Integer getId() {
-=======
 import java.util.List;
 
 public class Privilege {
@@ -46,7 +32,6 @@ public class Privilege {
 	}
 
 	public Integer getId() {
->>>>>>> branch 'master' of https://github.com/git913336682/repository.git
         return id;
     }
 
