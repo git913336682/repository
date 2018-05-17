@@ -28,13 +28,13 @@ public class Test {
 	@RequestMapping("upload.do")
 	public void summernoteImage(HttpServletRequest request, HttpServletResponse response,MultipartFile file) throws Exception{
      try {
+    	 System.out.println("----------");
     	//图片上传之后返回图片的路径
     	 String path = UploadUtil.commonUpload(request, file);
     	 //返回json类型的数据
     	 JSONObject jObject=new JSONObject();
     	 jObject.put("path", path);
     	 PrintWriter out=response.getWriter();
-    	 Thread.sleep(2000);
     	 out.print(jObject);
     	 out.close();
      }catch(Exception e) {

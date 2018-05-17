@@ -7,6 +7,7 @@
     <result column="m_url" property="mUrl" jdbcType="VARCHAR" />
     <result column="LEVEL" property="level" jdbcType="INTEGER" />
     <result column="p_id" property="pId" jdbcType="INTEGER" />
+<<<<<<< HEAD
   </resultMap>
   <sql id="Base_Column_List" >
     id, m_name, m_url, LEVEL, p_id
@@ -90,4 +91,103 @@
       p_id = #{pId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+=======
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, m_name, m_url, LEVEL, p_id, icon
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from privilege
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from privilege
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ycft.ycft.po.Privilege" >
+    insert into privilege (id, m_name, m_url, 
+      LEVEL, p_id, icon)
+    values (#{id,jdbcType=INTEGER}, #{mName,jdbcType=VARCHAR}, #{mUrl,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ycft.ycft.po.Privilege" >
+    insert into privilege
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="mName != null" >
+        m_name,
+      </if>
+      <if test="mUrl != null" >
+        m_url,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mName != null" >
+        #{mName,jdbcType=VARCHAR},
+      </if>
+      <if test="mUrl != null" >
+        #{mUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ycft.ycft.po.Privilege" >
+    update privilege
+    <set >
+      <if test="mName != null" >
+        m_name = #{mName,jdbcType=VARCHAR},
+      </if>
+      <if test="mUrl != null" >
+        m_url = #{mUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ycft.ycft.po.Privilege" >
+    update privilege
+    set m_name = #{mName,jdbcType=VARCHAR},
+      m_url = #{mUrl,jdbcType=VARCHAR},
+      LEVEL = #{level,jdbcType=INTEGER},
+      p_id = #{pId,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+   <select id="queryMenuList" resultMap="BaseResultMap" resultType="com.ycft.ycft.po.User">
+       SELECT * FROM privilege
+   </select>
+>>>>>>> branch 'master' of https://github.com/git913336682/repository.git
 </mapper>

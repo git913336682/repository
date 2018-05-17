@@ -1,5 +1,6 @@
 package com.ycft.ycft.po;
 
+<<<<<<< HEAD
 public class Privilege {
     private Integer id;
 
@@ -12,6 +13,40 @@ public class Privilege {
     private Integer pId;
 
     public Integer getId() {
+=======
+import java.util.List;
+
+public class Privilege {
+    private Integer id;
+
+    private String mName;
+
+    private String mUrl;
+
+    private Integer level;
+
+    private Integer pId;
+    private String icon;
+    private List<Privilege> childMenus;
+    
+    public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public List<Privilege> getChildMenus() {
+		return childMenus;
+	}
+
+	public void setChildMenus(List<Privilege> childMenus) {
+		this.childMenus = childMenus;
+	}
+
+	public Integer getId() {
+>>>>>>> branch 'master' of https://github.com/git913336682/repository.git
         return id;
     }
 
