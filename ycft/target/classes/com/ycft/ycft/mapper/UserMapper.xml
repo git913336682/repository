@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ycft.ycft.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.ycft.ycft.po.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sno" property="sno" jdbcType="VARCHAR" />
+    <result column="psd" property="psd" jdbcType="VARCHAR" />
+    <result column="sname" property="sname" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="college" property="college" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="cls" property="cls" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="r1" property="r1" jdbcType="VARCHAR" />
+    <result column="r2" property="r2" jdbcType="VARCHAR" />
+    <result column="r3" property="r3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sno, psd, sname, tel, school, college, department, profession, cls, status, r1, 
+    r2, r3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ycft.ycft.po.User" >
+    insert into user (id, sno, psd, 
+      sname, tel, school, 
+      college, department, profession, 
+      cls, status, r1, r2, 
+      r3)
+    values (#{id,jdbcType=INTEGER}, #{sno,jdbcType=VARCHAR}, #{psd,jdbcType=VARCHAR}, 
+      #{sname,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
+      #{college,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
+      #{cls,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{r1,jdbcType=VARCHAR}, #{r2,jdbcType=VARCHAR}, 
+      #{r3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ycft.ycft.po.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sno != null" >
+        sno,
+      </if>
+      <if test="psd != null" >
+        psd,
+      </if>
+      <if test="sname != null" >
+        sname,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="college != null" >
+        college,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="cls != null" >
+        cls,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="r1 != null" >
+        r1,
+      </if>
+      <if test="r2 != null" >
+        r2,
+      </if>
+      <if test="r3 != null" >
+        r3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sno != null" >
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="psd != null" >
+        #{psd,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null" >
+        #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="cls != null" >
+        #{cls,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="r1 != null" >
+        #{r1,jdbcType=VARCHAR},
+      </if>
+      <if test="r2 != null" >
+        #{r2,jdbcType=VARCHAR},
+      </if>
+      <if test="r3 != null" >
+        #{r3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ycft.ycft.po.User" >
+    update user
+    <set >
+      <if test="sno != null" >
+        sno = #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="psd != null" >
+        psd = #{psd,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null" >
+        college = #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="cls != null" >
+        cls = #{cls,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="r1 != null" >
+        r1 = #{r1,jdbcType=VARCHAR},
+      </if>
+      <if test="r2 != null" >
+        r2 = #{r2,jdbcType=VARCHAR},
+      </if>
+      <if test="r3 != null" >
+        r3 = #{r3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ycft.ycft.po.User" >
+    update user
+    set sno = #{sno,jdbcType=VARCHAR},
+      psd = #{psd,jdbcType=VARCHAR},
+      sname = #{sname,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      college = #{college,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      cls = #{cls,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      r1 = #{r1,jdbcType=VARCHAR},
+      r2 = #{r2,jdbcType=VARCHAR},
+      r3 = #{r3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
