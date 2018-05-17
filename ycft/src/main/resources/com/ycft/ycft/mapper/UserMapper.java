@@ -23,8 +23,11 @@ public interface UserMapper {
     /*===============客户端方法================*/
     
     /*===============服务端方法================*/
+    //通过账号查
     public User bsLogin(String sno);
     List<User> selective(User us);
     public int batchInsert(List<User> uList);
+    //全查
+    public List<User> selAll();
     /*===============服务端方法================*/
 }
