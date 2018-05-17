@@ -1,92 +1,33 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>后台登录</title>
-<!-- Custom Theme files -->
-<link href="css/login.css" rel="stylesheet" type="text/css" media="all"/>
-<!-- Custom Theme files -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<meta name="keywords" content="后台登录" />
-<!--Google Fonts-->
-<!--<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
---><!--Google Fonts-->
-<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-<script src="plugin/toast/js/toast.js"></script>
-<link rel="stylesheet" href="plugin/toast/css/toast.css" type="text/css"  /> 
-<link rel="stylesheet" href="plugin/toast/css/animate.css" type="text/css"  /> 
-<script>
-function showtoastFromDivbottom(){
-	showMessage('这是提示消息哈！',2000,true,'bounceInUp-hastrans','bounceOutDown-hastrans');
-}
-function showtoastFromDivbottom(){
-	$('.toast_div').toast({
-		content:'这是默认的提示信息',
-		duration:2000,
-		isCenter:false,
-		animateIn:'bounceIn-hastrans',
-		animateOut:'bounceOut-hastrans',
-	});
-} 
-function showtoastFromDocument(){
-	showMessage('这是提示消息哈！');
-}
-
-function valid(){
-	var username = $("#username").val().trim();
-	var pwd  = $("#pwd").val().trim(); 
-	if(username == ''){ 
-		showMessage('请输入用户名!');
-		$("#username").focus();
-		return false;
-	}else if( pwd == ''){
-		showMessage('请输入密码!');
-		$("#pwd").focus();
-		return false;
-	}else{
-		//提交开始登录
-		return true;
-		
-	}
-	
-}
-</script>
-</head>
-<body>
-<!--header start here-->
-<!-- <div class="toast_div" style="width:100%;height:100px;position:absolute;top:130;left:0"></div> -->
-<div class="login-form">
-
-			<div class="top-login">
-				<span><img src="images/group.png" alt=""/></span>
-			</div>
-			<h1>登录</h1>
-			<div class="login-top">
-			<form onsubmit="return valid()" method="post" action="" >
-				<div class="login-ic">
-					<i ></i>
-					<input type="text" id="username" name="username"  value="" placeholder="请输入学号" />
-					<div class="clear"> </div>
-				</div>
-				<div class="login-ic">
-					<i class="icon"></i>
-					<input type="password"  id="pwd" name="pwd" value="" placeholder="请输入密码" />
-					<div class="clear"> </div>
-				</div>
-			
-				<div class="log-bwn">
-					<input    type="submit"  value="Login" >
-				</div>
-				</form>
-			</div>
-</div>		
-<!--header start here-->
-</body>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>login</title>
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <body class="text-center">
+    <form class="form-signin">
+    <div id="logo" class="mb-3">
+    	<img id="logo_img" src="./images/users.png">
+    </div>
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">学	号</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">密	码</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3 line">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div  class="mb-3 line">
+    	<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </div>
+  </form>
+  </body>
 </html>
