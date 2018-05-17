@@ -21,6 +21,13 @@
     id, sno, psd, sname, tel, school, college, department, profession, cls, status, r1, 
     r2, r3
   </sql>
+  
+  <select id="feLogin" parameterType="String" resultMap="BaseResultMap">
+      
+      	select <include refid="Base_Column_List"></include>
+      	from user where sno = #{0}
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
