@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sun.tools.doclint.Checker.Flag;
+import com.sun.tools.internal.xjc.generator.bean.ImplStructureStrategy.Result;
 import com.ycft.ycft.mapper.UserMapper;
 import com.ycft.ycft.po.User;
 import com.ycft.ycft.tools.MD5;
@@ -252,6 +254,21 @@ public class UserSer {
 		if (um.deleteByPrimaryKey(id) > 0) {
 			flag = true;
 		}
+		return flag;
+	}
+	
+	/**
+	 * @return flag
+	 */
+	public boolean update(User user) {
+		boolean flag = false;
+		
+		int result = um.updateByPrimaryKeySelective(user);
+		
+		if (result > 0) {
+			flag = true;
+		}
+		
 		return flag;
 	}
 	

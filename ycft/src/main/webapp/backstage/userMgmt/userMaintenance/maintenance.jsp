@@ -81,12 +81,11 @@
 <div id="page-wrapper" >
 	<div class="header"> 
 		<h1 class="page-header">
-		    Tables Page <small>Responsive tables</small>
+		    用户维护
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Tables</a></li>
-			<li class="active">Data</li>
+			<li class="active">用户管理</li>
+			<li class="active">用户维护</li>
 		</ol> 
 	</div>
 	
@@ -95,7 +94,7 @@
 		    <!-- Advanced Tables -->
 		<div class="panel panel-default">
 	    <div class="panel-heading">
-	         	学生信息
+	         	用户信息
 	    </div>
 	    <div class="panel-body">
 	        <div class="table-responsive">
@@ -119,10 +118,11 @@
                             <td><%=uList.get(i).getSname() %></td>
                             <td class="col-md-2">
                             	<input type="button" value="详情" class="btn btn-warning" data-toggle="modal" data-target="#details<%=uList.get(i).getId()%>"/>
-                            	<input type="button" value="修改" class="btn btn-primary"/>
+                            	<input type="button" value="修改" class="btn btn-primary" data-toggle="modal" data-target="#update<%=uList.get(i).getId()%>"/>
                             	<input type="button" value="删除" class="btn btn-danger" onclick="del('<%=uList.get(i).getId() %>','<%=uList.get(i).getSname()%>')"/>
                             </td>
                         </tr>
+                        <!-- 删除的弹出层 -->
 						<div class="modal fade" id="details<%=uList.get(i).getId()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
 						    <div class="modal-dialog" role="document">  
 						        <div class="modal-content">  
@@ -182,6 +182,71 @@
 						        </div>  
 						    </div>  
 						</div>
+						<!-- 修改的弹出层 -->
+						<div class="modal fade" id="update<%=uList.get(i).getId()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
+						    <div class="modal-dialog" role="document">  
+						        <div class="modal-content">  
+						            <div class="modal-header">  
+						                <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+						                    <span aria-hidden="true">×</span>  
+						                </button>  
+						                <h4 class="modal-title" id="myModalLabel">学生信息修改</h4>  
+						            </div>
+						            <form action="update.do" method="post"> 
+						            	<input type="hidden" name="id" value="<%=uList.get(i).getId() %>"/>  
+							            <div class="modal-body">  
+							            	<fieldset>
+						                       <div class="form-group">
+						                          <label class="col-sm-2 control-label" for="ds_host">姓名</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_host" type="text" value="<%=uList.get(i).getSname() %>" name="sname"/>
+						                          </div>
+						                          <label class="col-sm-2 control-label" for="ds_name">学号</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_name" type="text" value="<%=uList.get(i).getSno() %>" name="sno"/>
+						                          </div>
+						                       </div>
+						                       <div class="form-group">
+						                          <label class="col-sm-2 control-label" for="ds_host">电话</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_host" type="text" value="<%=uList.get(i).getTel() %>" name="tel"/>
+						                          </div>
+						                          <label class="col-sm-2 control-label" for="ds_name">校区</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_name" type="text" value="<%=uList.get(i).getSchool() %>" name="school"/>
+						                          </div>
+						                       </div>
+						                       <div class="form-group">
+						                          <label class="col-sm-2 control-label" for="ds_host">学院</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_host" type="text" value="<%=uList.get(i).getCollege() %>" name="college"/>
+						                          </div>
+						                          <label class="col-sm-2 control-label" for="ds_name">系</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_name" type="text" value="<%=uList.get(i).getDepartment() %>" name="department"/>
+						                          </div>
+						                       </div>
+						                       <div class="form-group">
+						                          <label class="col-sm-2 control-label" for="ds_host">专业</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_host" type="text" value="<%=uList.get(i).getProfession() %>" name="profession"/>
+						                          </div>
+						                          <label class="col-sm-2 control-label" for="ds_name">班级</label>
+						                          <div class="col-sm-4">
+						                             <input class="form-control" id="ds_name" type="text" value="<%=uList.get(i).getCls() %>" name="cls"/>
+						                          </div>
+						                       </div>
+						                    </fieldset>
+							            </div>  
+							            <div class="modal-footer">  
+							                <button type="submit" class="btn btn-info">保存</button>  
+							                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>  
+							            </div>
+						            </form>  
+						        </div>  
+						    </div>  
+						</div>
+						</form>
 	                <%	
 	                }%>
 	                </tbody>

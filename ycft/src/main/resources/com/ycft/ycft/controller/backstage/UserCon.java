@@ -53,7 +53,6 @@ public class UserCon {
 	@RequestMapping("/exportExcel.action")
 	public ModelAndView exportExcel(User user,HttpServletResponse response){
 		ModelAndView mav = new ModelAndView();
-		System.out.println("------------------");
 		boolean b = us.exportExcel(user,response);
 		mav.setViewName("useritionMan/useritionSel/result.jsp");
 		return mav;
@@ -76,7 +75,6 @@ public class UserCon {
 	@RequestMapping("/importExcel.action")
 	public ModelAndView importExcel(MultipartFile file){
 		ModelAndView mav = new ModelAndView();
-		System.out.println("==========================");
 		boolean b = false;
 		try {
 			b =  us.importExcel(file);
@@ -102,7 +100,6 @@ public class UserCon {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<User> uList = us.selAll();
-		
 		modelAndView.setViewName("backstage/userMgmt/userMaintenance/maintenance.jsp");
 		modelAndView.addObject("uList" , uList);
 		
@@ -114,7 +111,6 @@ public class UserCon {
 		
 		PrintWriter writer = null;
 		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println("-----------" + id);
 		try {
 			writer = response.getWriter();
 			boolean flag = us.del(id);
@@ -129,5 +125,21 @@ public class UserCon {
 			writer.flush();
 			writer.close();
 		}
+	}
+	
+	/**
+	 * 
+	 * @return modelAndView
+	 */
+	@RequestMapping("/update.do")
+	public ModelAndView update(User user) {
+		ModelAndView modelAndView = new ModelAndView();
+		boolean flag = us.update(user);
+		if (flag) {
+			modelAndView.setViewName("selAll.do");
+		} else {
+			modelAndView.setViewName("fail.jsp");
+		}
+		return modelAndView;
 	}
 }
