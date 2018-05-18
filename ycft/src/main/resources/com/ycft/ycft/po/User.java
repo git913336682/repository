@@ -21,6 +21,8 @@ public class User {
 
     private String cls;
 
+    private String imgName;
+
     private String status;
 
     private String r1;
@@ -28,6 +30,8 @@ public class User {
     private String r2;
 
     private String r3;
+
+    private byte[] img;
 
     public Integer getId() {
         return id;
@@ -109,6 +113,14 @@ public class User {
         this.cls = cls == null ? null : cls.trim();
     }
 
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName == null ? null : imgName.trim();
+    }
+
     public String getStatus() {
         return status;
     }
@@ -139,5 +151,13 @@ public class User {
 
     public void setR3(String r3) {
         this.r3 = r3 == null ? null : r3.trim();
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
     }
 }

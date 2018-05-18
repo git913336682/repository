@@ -233,6 +233,26 @@ public class UserSer {
 			}
 		}
 		
+	/**
+	 * 查询所有学生的信息，不包括超级管理员
+	 * @return uList
+	 */
+	public List<User> selAll(){
+		List<User> uList = um.selAll();
+		return uList;
+	}
 	
+	/**
+	 * @param id
+	 * @return boolean
+	 */
+	public boolean del(int id) {
+		boolean flag = false;
+		System.out.println("-++"+id);
+		if (um.deleteByPrimaryKey(id) > 0) {
+			flag = true;
+		}
+		return flag;
+	}
 	
 }
